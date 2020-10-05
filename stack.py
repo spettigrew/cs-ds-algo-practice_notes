@@ -4,7 +4,7 @@
 class Stack:
 
     def __init__(self):
-        # initialize it to a one dimensional array
+        # initialize it to a one dimensional array or linked list
         self.stack = []
 
     """
