@@ -67,7 +67,7 @@ class LinkedList:
         # change its pointer to point to the new node
         actual_node.nextNode = new_node
 
-    # function to get the size of the linked list
+    # function to get the size of the linked list O(1)
     def size_of_list(self):
         # return the number of nodes the list contains
         return self.numOfNodes
@@ -85,6 +85,48 @@ class LinkedList:
             # move the reference to the next node in the list
             actual_node = actual_node.nextNode
 
+    # function to remove a node from the list O(N)
+    def remove(self, data):
+
+        # if the list is empty return
+        if self.head is None:
+            return
+
+        # set the reference to the first node
+        actual_node = self.head
+        # set the reference to the previous node which is none at first
+        previous_node = None
+
+        # iterate the list continuing while the actual_node doesn't contain
+        # what we're looking for and isn't Null (empty list or end of list)
+        while actual_node is not None and actual_node.data != data:
+            # consider  the next node in the list
+            # iterate the prev node to current
+            previous_node = actual_node
+            # iterate the actual node to the next
+            actual_node = actual_node.nextNode
+
+        # if we reach the end of the list and don't find a match return
+        if actual_node is None:
+            return
+
+        # at this point we have found a match
+        # first decrease the number of items in the list
+        self.numOfNodes -= 1
+
+        # after the while loop ( the node with the data was found)
+        # if the previous node is Null then the head node is the one to remove
+        if previous_node is None:
+            # setting the new head to be the next node will remove the current
+            # actual node
+            self.head = actual_node.nextNode
+        # if previous node is not Null
+        else:
+            # set the prev.nextNode to be the actual nextNode cutting out the
+            # actual node we want to remove
+            previous_node.nextNode = actual_node.nextNode
+
+
 
 """
 use the functions just created
@@ -97,9 +139,12 @@ linked_list.insert_start(3)
 linked_list.insert_start(7)
 # insert a node at the end of the list O(N)
 linked_list.insert_end(10)
+# remove a node from list O(N)
+linked_list.remove(3)
 # print the node values of the list O(N)
 linked_list.traverse()
-
+# print the size of the list
+print(f'size: {linked_list.size_of_list()}')
 
 
 
