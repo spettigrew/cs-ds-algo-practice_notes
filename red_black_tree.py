@@ -1,4 +1,4 @@
-
+# Faster insertion and deletion than AVL, slower search
 class Color:
     RED = 1
     BLACK = 2

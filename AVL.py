@@ -1,3 +1,5 @@
+# Faster searching than Red black trees, slower insertion and deletion
+
 class Node:
 
     def __init__(self, data, parent):
